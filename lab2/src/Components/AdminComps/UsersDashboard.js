@@ -363,3 +363,317 @@ function UsersDashboard() {
   
  const handleSubmit = async (e) => {
   e.preventDefault();
+
+  const preset_key = 'ecommerce_images'; // Make sure this preset is valid
+  const cloud_name = 'diw1dnseq';
+
+  // Check if the file is selected
+  if (!newUser.selectedFile) {
+    console.error('No file selected for upload');
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append('file', newUser.selectedFile); // Ensure the file is valid
+  formData.append('upload_preset', preset_key); // Ensure preset is correct
+
+  try {
+    // Upload image to Cloudinary
+    const cloudinaryResponse = await fetch(
+      `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`,
+      {
+        method: 'POST',
+        body: formData,
+      }
+    );
+    
+    const imageData = await cloudinaryResponse.json();
+
+    if (imageData.error) {
+      throw new Error(imageData.error.message); // Handle Cloudinary error
+    }
+
+    // Create user with image URL from Cloudinary
+    const userData = {
+      userName: newUser.name,
+      userEmail: newUser.email,
+      userPhoneNum: newUser.phone,
+      userPassword: newUser.password,
+      userIsAdmin: newUser.isAdmin,
+      userProfile: imageData.secure_url, // Use the Cloudinary URL
+    };
+
+    const response = await fetch('http://localhost:5000/api/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userData),
+    });
+
+    if (response.ok) {
+      console.log('User created successfully!');
+      handleRefresh();
+      setNewUser({
+        name: '',
+        email: '',
+        phone: '',
+        password: '',
+        isAdmin: false,
+        selectedFile: null,
+      });
+    } else {
+      console.error('Error creating user:', response.statusText);
+    }
+  } catch (error) {
+    console.error('An error occurred:', error.message);
+  }
+};
+
+  
+  
+  const handleDeleteUser = async (e) => {
+    e.preventDefault();
+  
+    try {
+      const response = await fetch(`http://localhost:5000/api/users/${editingUser._id}`, {
+        method: 'DELETE',
+      });
+  
+      if (response.ok) {
+        handleAlert();
+        setFormInputs({
+          userName: '',
+          userEmail: '',
+          userPhoneNum: '',
+          userPassword: '',
+          userIsAdmin: false,
+        });
+        setEditingUser(null);
+      } else {
+        console.error('Error deleting user:', response.statusText);
+      }
+
+      handleRefresh();
+    } catch (error) {
+      console.error('An error occurred:', error);
+    }
+  };
+  
+  const handleAlert = () => {
+    setThrowAlert(!throwAlert);
+  }
+
+  const handleImagePaste = (e) => {
+    const pastedUrl = e.clipboardData.getData('text');
+    const imageExtensions = /\.(jpeg|jpg|png|gif)$/i;
+    
+    if (imageExtensions.test(pastedUrl)) {
+      setNewUser({ ...newUser, selectedFile: pastedUrl });
+      setPhotoError('');
+    } else {
+      setPhotoError('Please paste a valid image URL (JPEG, JPG, PNG, GIF).');
+    }
+  };
+  
+  const handleRefresh = async () => {
+    fetchUsers();
+  };
+
+  const handleCancelChanges = () => {
+    setEditingUser(null);
+  };
+  
+  return (
+    <div className='userMainCont'>
+      <div className='header'>
+        <div className='title'>
+          <h1>Users Dashboard</h1>
+        </div>
+        <div className='dashboardNav'>
+          <button className='ulU' onClick={() => selectedPage(1)}>User List/Update</button>
+          <button className='cau' onClick={() => selectedPage(2)}>Create a user</button>
+        </div>
+      </div>
+      <div className='bodyContainer'>
+        <div className='listContainer'>
+          <div className='userSearch'>
+          <input
+            className="userSeachInput"
+            type="text"
+            placeholder="Search for a specific user"
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
+            <h2 onClick={handleRefresh}>{refreshSymbol}</h2>
+            <div className='noUsers'>
+              <p>{usersSymbol}</p>
+              <p>{users.length}</p>
+            </div>
+          </div>
+                {filteredUsers.length > 0 ? (
+            filteredUsers.map(user => (
+              <div key={user._id} className='userCard'>
+                <div className='mainInfo'>
+                  <div className='userMainInfo'>
+                    <div className='userImg'>
+                      <img src={user.userProfile || placeholderImg} alt='Profile'></img>
+                    </div>
+                    <div className='userTitle'>
+                      <h3>{user.userName}</h3>
+                      <p>{user.userEmail}</p>
+                    </div>
+                  </div>  
+                  <div className='userBtn'>
+                    <button className='editBtn' onClick={() => handleEditUser(user._id)}>Edit User</button>
+                  </div>
+                </div>
+                <div className='userInfo'>
+                  <p className='passwordEl'>Password: {user.userPassword}</p>
+                  <p className='phoneEl'>Phone number: {user.userPhoneNum}</p>
+                  <p className='dateOfCreation'>Account created at: {formatDate(user.userDateOfCreation)}</p>
+                  <p className='userId'>User ID: {user._id}</p>
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className='zeroUsers'>
+              <h1>We couldn't find any users with the name: "{searchTerm}"</h1>
+              <AdminIcons.sadIcon />
+            </div>
+          )}
+        </div>
+        <form>
+  <div className='infoContainer'>
+    {editingUser ? (
+      <React.Fragment>
+        <div className='rightMainUserInfo'>
+          <div className='rightUserImage'>
+            <img src={formInputs.userProfile} className='rightPLCIMG' alt='Profile'></img>
+          </div>
+          <div className='rightUserTitle'>
+            <div className='inpt'>
+              <label>Name: </label>
+              <input type='text' value={formInputs.userName} onChange={handleInputChange} name='userName' />
+            </div>
+            {nameError && <p className="errorMessage">{nameError}</p>}
+            <div className='inpt'>
+              <label>Email: </label>
+              <input type='email' value={formInputs.userEmail} onChange={handleInputChange} name='userEmail' />
+            </div>
+            {emailError && <p className="errorMessage">{emailError}</p>}
+            <div className='inpt'>
+              <label>Phone Num: </label>
+              <input type='tel' value={formInputs.userPhoneNum} onChange={handleInputChange} name='userPhoneNum' />
+            </div>
+            {phoneError && <p className="errorMessage">{phoneError}</p>}
+            <div className='inpt file'>
+            <label class="custom-file-upload-edit">
+                <input type="file" onChange={handleInputChange}/>
+                Upload New Image Here
+            </label>
+            </div>
+            {photoError && <p className="errorMessage">{photoError}</p>}
+          </div>
+        </div>
+        <div className='rightMoreInfo'>
+          <div className='inptMI'>
+            <label>Password: </label>
+            <input type='password' value={formInputs.userPassword} onChange={handleInputChange} name='userPassword' className='inptMIi'/>
+          </div>
+          <div className='inptMI'>
+            <label>Is Admin: </label>
+            <input type='checkbox' checked={formInputs.userIsAdmin} onChange={handleInputChange} name='userIsAdmin' className='inptMIi'/>
+          </div>
+          <div className='inptMI'>
+            <label>Date of Creation: </label>
+            <input type='text' value={formatDate(editingUser.userDateOfCreation)} readOnly ></input>
+          </div>
+        </div>
+        <div className='rightBtns'>
+          <button className='update' onClick={handleUpdateUser}>Confirm Changes</button>
+          <button className='cancel' onClick={handleCancelChanges}>Cancel Changes</button>
+          <button type='button' className='delete' onClick={handleAlert}>Delete User</button>
+        </div>
+      </React.Fragment>
+    ) : (
+      <div className='defaultInfoContainer'>
+        <h1>{personSymbol}</h1>
+        <h1>Edit User</h1>
+        <h3>Please select a user on the left pannel to edit them</h3>
+      </div>
+    )}
+    {/* DELETE ALERT */}
+    {throwAlert && (
+      <div className='deleteAlert'>
+        <h1>{dangerIcon}</h1>
+        <p>Are you sure you want to delete "{formInputs.userName}" from the database?</p>
+        <div className='delBtnCont'>
+          <button type="button" className='trueDelete' onClick={handleDeleteUser}>Delete</button>
+          <button type="button" className='cancelDeletion' onClick={handleAlert}>Cancel</button>
+        </div>  
+      </div>
+    )}
+  </div>
+</form>
+      </div>
+
+      {/* CREATE USER CONT */}
+      <div className='createUserContainer' style={{ display: 'none' }}>
+        <div className='cuTitle'>
+          <h1>Create User</h1>
+        </div>
+        <form className="createUserForm" onSubmit={handleSubmit} enctype="multipart/form-data">
+          <div className='createUserLeft'>
+            <div className='cuInputs'>
+              <div className='cInput'>
+                <label>Name:</label>
+                <input type='text' name='name' value={newUser.name} onChange={handleUsernameChange}></input>
+              </div>
+              {!usernameAvailability && <p className='createError'>Username is taken.</p>}
+              <div className='cInput'>
+                <label>Email:</label>
+                <input type='email' name='email' value={newUser.email} onChange={handleEmailChange}></input>
+              </div>
+              {!emailValidity && <p className='createError'>Invalid email format.</p>}
+              {!emailAvailability && <p className='createError'>Email is already registered.</p>}
+              <div className='cInput'>
+                <label>Phone Number:</label>
+                <input type='number' name='phone' value={newUser.phone} onChange={handlePhoneChange}></input>
+              </div>
+              {!phoneValidity && <p className='createError'>Please enter a valid phone number.</p>}
+              {!phoneAvailability && <p className='createError'>This phone number is already in use.</p>}
+              <div className='cInput'>
+                <label>Password:</label>
+                <input type='password' name='password' value={newUser.password} onChange={handleChange}></input>
+              </div>
+              <div className='cInput'>
+                <label>Is Admin:</label>
+                <input type='checkbox' name='isAdmin' checked={newUser.isAdmin} onChange={handleChange} className='createCheck'></input>
+              </div>
+            </div>
+          </div>
+          <div className='createUserRight'>
+          <div className='inputPic'>
+            {newUser.selectedFile && (
+              <img src={URL.createObjectURL(newUser.selectedFile)} alt='Profile' />
+            )}
+          </div>
+            <div className='profileFind'>
+            <label class="custom-file-upload">
+                <input type="file" onChange={handleFileChange}/>
+                Upload Image Here
+            </label>
+            </div>
+            <div className='createUserButtons'>
+              <button type='submit' className='createNewUser'>Create User</button>
+              <button className='discardNewUser' onClick={handleDiscard}>Discard User</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  )
+}
+
+export default UsersDashboard;
