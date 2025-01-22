@@ -1,0 +1,22 @@
+.cHolder {
+    position: relative; /* Add relative positioning */
+    background-color: rgb(37, 37, 37);
+    width: 98%;
+    height: 97vh;
+    margin: 15px;
+    border-radius: 15px;
+    overflow-y: scroll;
+    color: white;
+}
+
+.consoletext {
+    margin: 20px;
+}
+
+.cHolder h2 {
+    text-align: center;
+    position: absolute; /* Add absolute positioning */
+    top: 50%; /* Move the element down by 50% of its parent's height */
+    transform: translateY(-50%); /* Adjust for half of its own height */
+    width: 100%; /* Ensure the width spans the container */
+}
