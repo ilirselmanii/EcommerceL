@@ -1,0 +1,833 @@
+:root {
+    --black: #021214;
+    --blackSecondary: #0a1010;
+
+    --white: #F5FAFD;
+    --secondaryWhite: #e7e8e8;
+    --paleWhite: #9c9c9c;
+    --grey: #767676;
+}
+
+button, input, label {
+    font-family: "Mukta", sans-serif;
+}
+
+.header {
+    background: linear-gradient(45deg, var(--blackSecondary), var(--black));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    height: 10vh;
+    margin: 15px;
+    border-radius: 12px;
+
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.title h1 {
+    font-size: 50px;
+    color: var(--white);
+}
+
+.dashboardNav {
+    height: fit-content;
+    display: flex;
+    gap: 10px;
+}
+
+.dashboardNav button {
+    padding: 20px 40px;
+    font-size: 30px;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+
+    background-color: transparent;
+    color: var(--white);
+    transition: transform 0.2s;
+}
+
+.dashboardNav button:hover {
+    transform: translateY(-10px);
+}
+
+/* Me ndrrru */
+.bodyContainer {
+    display: none;
+    justify-content: space-evenly;
+
+    margin: 0 10px;
+    width: 98.5%;
+    height: 80vh;
+}
+
+.defaultInfoContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: var(--paleWhite);
+}
+
+.listContainer {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    max-height: 80vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    gap: 15px;
+}
+
+.bodyContainer form {
+    width: 50%;
+}
+
+.userSearch {
+    display: flex;
+    justify-content: center;
+    margin:  0 auto;
+    height: 80px;
+    width: 80%;
+    align-items: center;
+}
+
+.noUsers {
+    display: flex;
+    gap: 5px;
+    position: relative;
+    left: 40px;
+    color: var(--grey);
+}
+
+.userSearch h2 {
+    position: relative;
+    top: 10px;
+    left: 20px;
+    transition: all 0.1s;
+}
+
+.userSearch h2:hover {
+    transform: scale(1.1);
+    font-weight: bold;
+    color: #5152F5;
+}
+
+.userSeachInput {
+    padding: 10px;
+    margin: auto;
+    width: 25em;
+    font-size: 25px;
+    border: none;
+    background-color: transparent;
+    border-bottom: 2px var(--paleWhite) solid;
+    text-align: center;
+}
+
+.userSeachInput:focus {
+    outline: none;
+    border-bottom: 2px var(--grey) solid;
+}
+
+.userSeachInput:focus::placeholder {
+    color: transparent;
+}
+
+.userSeachInput::placeholder {
+    color: var(--paleWhite);
+}
+
+.userImg {
+    width: 70px;
+    height: 70px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.userImg img {
+    width: 100%; 
+    height: 100%;
+    object-fit: cover;
+}
+
+.userCard {
+    background: linear-gradient(-120deg, var(--black), var(--blackSecondary));
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 12px;
+    color: var(--blackSecondary);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.zeroUsers {
+    width: 80%;
+    color: var(--black);
+    margin: auto;
+    text-align: center;
+    font-size: 1em;
+}
+
+.mainInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.userMainInfo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    color: var(--white);
+}
+
+.userBtn {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.userBtn button {
+    padding: 5px 20px;
+    border: none;
+    border-radius: 5px;
+
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.userInfo {
+    overflow: hidden;
+    white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+  
+/* Cool :D */
+.userInfo p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    background-color: var(--secondaryWhite);
+    color: var(--black);
+
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.editBtn:hover {
+    background-color: rgb(0, 128, 255);
+    color: var(--white);
+}
+
+.delBtn:hover {
+    background-color: rgb(197, 8, 8);
+    color: var(--white);
+}
+
+/* right info */
+
+.rightMainUserInfo {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+
+    
+    gap: 14px;
+    font-size: 25px;
+}
+
+.rightUserImage {
+    position: relative;
+    border-radius: 12px;
+    width: 10em;
+    height: 10em;
+    overflow: hidden; 
+}
+  
+.rightUserImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+  
+.rightUserImage::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 45%;
+    height: 200px;
+    background-image: url('https://cdn-icons-png.flaticon.com/512/3342/3342137.png');
+    background-size: contain; 
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.rightUserImage::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.rightUserImage:hover::before {
+  opacity: 1;
+}
+
+.rightUserImage:hover::after {
+  opacity: 0.5; 
+}
+
+.rightUserTitle {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+}
+
+.inpt {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+
+    background-color: var(--white);
+    padding: 2px 10px;
+    border-radius: 12px;
+}
+
+.inpt input{
+    width: 65%;
+    font-size: 25px;
+    border: none;
+    background-color: transparent;
+}
+
+.infoContainer {
+    height: 100%;
+    background: linear-gradient(-120deg, var(--black), var(--blackSecondary));
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.rightMoreInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 15px;
+    margin: 0 20px;
+}
+
+.rightMoreInfo label {
+    width: 15%;
+}
+
+.rightMoreInfo input {
+    width: 98%;
+    padding: 5px;
+}
+
+.inptMI {
+    display: flex;
+
+    background-color: var(--white);
+    padding: 10px;
+    border-radius: 12px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.inptMI label {
+    width: 50%;
+    overflow-x: auto;
+    white-space: nowrap;
+
+    background-color: transparent;
+    border: none;
+}
+
+.rightBtns {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15%;
+    padding: 20px;
+}
+
+.rightBtns button {
+    font-weight: 800;
+    font-size: 15px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--blackSecondary);
+
+    transition: all 0.1s;
+}
+
+.update {
+    color: #45F595;
+    outline: 3px solid #45F595;
+}
+
+.cancel {
+    color: #5152F5;
+    outline: 3px solid #5152F5;
+}
+
+.delete {
+    color: #F53A33;
+    outline: 3px solid #F53A33;
+}
+
+.makeAdmin {
+    color: #DFF551;
+    outline: 3px solid #DFF551;
+}
+
+.update:hover {
+    background-color: #45F595;
+    color: var(--black);
+    outline: none;
+}
+
+.cancel:hover {
+    background-color: #5152F5;
+    color: var(--black);
+    outline: none;
+}
+
+.delete:hover {
+    background-color: #F53A33;
+    color: var(--black);
+    outline: none;
+}
+
+.makeAdmin:hover {
+    background-color: #DFF551;
+    color: var(--black);
+    outline: none;
+}
+
+/* Create User */
+
+.createUserContainer {
+    margin: 10px;
+    width: 97.5%;
+    height: 80vh;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.createUserContainer form{
+    display: flex;
+}
+
+.createUserLeft {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px 0;
+    width: 75%;
+    height: 100%;
+    position: relative;
+}
+
+.errorMessage {
+    text-align: center;
+    color: #F53A33;
+    font-weight: bold;
+    font-size: 12px;
+}
+.createError {
+    color: #F53A33;
+    font-weight: bold;
+}
+
+.cuTitle {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.cuInputs {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 80%;
+    justify-content: space-evenly;
+}
+
+.cInput {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.cuInputs label {
+    font-size: 24px;
+    width:30%;
+}
+
+.cuInputs input {
+    width: 70%;
+    border-radius: 10px;
+    border: 1px solid var(--blackSecondary);
+    font-size: 24px;
+    padding: 5px 10px;
+}
+
+.createCheck {
+    background-color: red;
+    font: inherit;
+    color: currentColor;
+    width: 1.15em;
+    height: 1.15em;
+    border-radius: 0.15em;
+    transform: translateY(-0.075em);
+}
+
+.createUserRight {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+
+    justify-content: space-between;
+}
+
+.inputPic {
+    position: relative;
+    width: 15em;
+    height: 15em;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    outline: 1px solid black;
+}
+
+.inputPic img {
+    width: 100%; 
+    height: 100%;
+    object-fit: cover;
+}
+
+.inputPic::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 45%;
+    height: 200px;
+    background-image: url('https://cdn-icons-png.flaticon.com/512/3342/3342137.png');
+    background-size: contain; 
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.inputPic::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.inputPic:hover::before {
+    opacity: 1;
+}
+
+.inputPic:hover::after {
+    opacity: 0.5; 
+    cursor: pointer;
+}
+
+.createUserButtons {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    gap: 20px;
+}
+
+.createUserButtons button{
+    padding: 10px 50px;
+    font-weight: 800;
+    font-size: 15px;
+    border-radius: 5px;
+    border: none;
+    background-color: transparent;
+
+    transition: all 0.1s;
+}
+
+.createNewUser {
+    color: #45F595;
+    outline: 3px solid #45F595;
+}
+
+.discardNewUser {
+    color: #F53A33;
+    outline: 3px solid #F53A33;
+}
+
+.createNewUser:hover {
+    background-color: #45F595;
+    color: var(--white);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.discardNewUser:hover {
+    background-color: #F53A33;
+    color: var(--white);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+/* Profile picture container */
+.profileFind {
+    width: 80%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+}
+
+.profileInputPic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.profileUrl {
+    border: none;
+    outline: 1px solid black;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: white;
+    width: 90%;
+}
+
+/* DELETE ALERT */
+
+.deleteAlert {
+    width: 15em;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #F53A33;
+    position: absolute;
+    padding: 20px;
+    border-radius: 12px;
+    margin: 0 13.2%;
+    bottom: 15em;
+
+    display: flex;
+    opacity: 1;
+    transition: opacity 2s ease-in-out;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+.deleteAlert p {
+    width: 80%;
+    font-size: 14px;
+    text-align: center;
+}
+
+.delBtnCont {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.delBtnCont button {
+    padding: 10px 20px;
+    background-color: black;
+    color: #F53A33;
+    border: none;
+    transition: background 0.1s;
+    border-radius: 5px;
+}
+
+.trueDelete:hover {
+    border-radius: 5px;
+    background-color: #F53A33;
+    color: black;
+    outline: 2px solid black;
+    outline-offset: -2px;
+}
+
+.cancelDeletion:hover {
+    border-radius: 5px;
+    background-color: #5152F5;
+    color: black;
+    outline-offset: -2px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    margin: auto;
+    width: fit-content;
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.custom-file-upload-edit {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.file:hover {
+    cursor: pointer;
+    background-color: rgb(209, 160, 68);
+}
+
+@media only screen and (max-width: 1736px) {
+
+    .inpt label, .inpt input {
+        font-size: 18px;
+        align-items: center;
+    }
+
+    .rightUserImage {
+        width: 8em;
+        height: 8em;
+    }
+
+    .rightBtns {
+        flex-direction: column;
+        width: fit-content;
+        gap: 18px;
+        margin: 30px auto;
+    }
+}
+
+@media only screen and (max-width: 1363px) {
+    .header h1{
+        font-size: 40px;
+    }
+
+    .dashboardNav button {
+        font-size: 20px;
+    }
+
+    .inpt label, .inpt input {
+        font-size: 16px;
+    }
+
+    .rightUserImage {
+        width: 6em;
+        height: 6em;
+    }
+
+    .userSearch {
+        margin: 0px auto;
+    }
+
+    .noUsers {
+        left: 20px;
+    }
+
+    .userSearch h2 {
+        left: 10px;
+    }
+}
+
+@media only screen and (max-width: 1173px) {
+    .rightMainUserInfo {
+        flex-direction: column;
+    }
+
+    .rightUserTitle {
+        width: 100%;
+    }
+
+    .rightUserImage {
+        width: 5em;
+        height: 5em;
+    }
+
+    .noUsers {
+        left: 15px;
+    }
+
+    .userSearch h2 {
+        left: 7px;
+    }
+
+    .defaultInfoContainer h3{
+        font-size: 1em;
+    }
+}
+
+@media only screen and (max-width: 1068px) {
+    .header h1{
+        font-size: 25px;
+    } 
+
+    .dashboardNav button {
+        padding: 10px;
+    }
+
+}
+
+@media only screen and (max-width: 1363px) {
+    
+}
+
+@media only screen and (max-width: 1363px) {
+    
+}
+
+@media only screen and (max-width: 1363px) {
+    
+}
+
+@media only screen and (max-height: 840px) {
+    .infoContainer{
+        height: 97%;
+    }
+
+    .rightBtns {
+        flex-direction: row;
+    }
+
+    .rightBtns button{
+        font-size: 10px;
+    }
+}
