@@ -1,0 +1,417 @@
+:root {
+    --black: #021214;
+    --blackSecondary: #181817;
+
+    --white: #F5FAFD;
+    --paleWhite: #a9adb0;
+}
+
+button, input {
+    font-family: "Mukta", sans-serif;
+}
+
+.adminPage {
+    display: flex;
+}
+
+.menu {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 20%;
+    background: linear-gradient(-120deg, var(--black), var(--blackSecondary));
+    gap: 30px;
+
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.mainContainer {
+    height: 100vh;
+    width: 80%;
+    background-color: var(--white);
+}
+
+.logo {
+    padding-top: 40px;
+    color: var(--white);
+    font-size: 1rem;
+    text-align: center;
+}
+
+.adminProfile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+
+    color: var(--white);
+}
+
+.pimage {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 15%;
+    border: var(--white) 2px solid;
+}
+
+.pimage img {
+    width: 100%; 
+    height: 100%;
+    object-fit: cover;
+}
+
+.pinfo h3{
+    font-size: 22px;
+}
+
+.pinfo p{
+    font-size: 14px;
+    color: var(--paleWhite);
+}
+
+.dashboard, .pages, .analytics {
+    color: var(--white);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 50%;
+    align-items: center;
+    position: relative;
+    left: -20px;
+}
+
+.line {
+    height: 90%;
+    align-self: center;
+}
+
+.db {
+    position: relative;
+    left: 20%;
+    display: flex;
+    gap: 15px;
+}
+
+.dashboardEntries ul{
+    list-style-type: none;
+}
+
+.active {
+    background-color: var(--white);
+    border-radius: 5px;
+    color: var(--black);
+    padding: 0 10px;
+    margin: 0 auto 5px auto;
+    width: fit-content;
+    transform: translateX(20px);
+    transition: transform 0.3s;
+}
+
+.active:hover {
+    background-color: var(--white);
+    border-radius: 5px;
+    color: var(--black);
+
+    padding: 0 10px;
+    margin: 0 auto 5px auto;
+    width: fit-content;
+    transition: transform 0.3s;
+}
+
+.btns {
+    display: flex;
+    margin: auto;
+}
+
+.btns button {
+    margin-right: 10px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+}
+
+.lgout {
+    background-color: transparent;
+    outline: 2px solid var(--white);
+    outline-offset: -2px;
+
+    color: var(--white);
+    font-weight: 600;
+}
+
+.lgout:hover {
+    background-color: var(--white);
+    color: var(--black);
+}
+
+.swtch:hover {
+    background-color: transparent;
+    color: var(--white);
+    outline: 2px solid var(--white);
+    outline-offset: -2px;
+}
+
+.swtch {
+    border: none;
+    background-color: var(--white);
+    
+
+    color: var(--black);
+    font-weight: 600;
+}
+
+li {
+    transition: padding 0.2s, position 2s;
+    padding: 0 10px;
+    margin-bottom: 5px;
+    transition: transform 0.3s;
+}
+
+li:hover {
+    width: fit-content;
+    outline: 2px solid var(--white);
+    outline-offset: -2px;
+
+    padding: 0 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s; 
+}
+
+.nadmin {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #F5FAFD;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.nadmin h1 {
+    font-size: 3em;
+}
+
+.nadmin p {
+    color: #021214;
+}
+
+.anMain {
+    margin: 5px 10px;
+}
+
+.anTitle {
+    background-color: var(--black);
+    padding: 10px 30px;
+    border-radius: 12px;
+    color: var(--white);
+}
+
+.anRow1 {
+    margin-top: 10px;
+    display: flex;
+    width: 100%;
+    height: 16em;
+   
+}
+
+.anUsers {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #434141;
+}
+
+.anUsers div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.anUsers div h1 {
+    font-size: 5em;
+}
+
+.anProd {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #434141;  
+
+}
+
+.anProd div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.anProd div h1 {
+    font-size: 5em;
+}
+
+.anRow2 {
+    display: flex;
+    height: 23em;
+    width: 100%;
+}
+
+.anData {
+    color: #434141;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    width: 40%;
+    height: 100%;
+}
+
+.anFinance {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.anGraph {
+    width: 10%;
+    height: 100%;
+    background-color: rgb(146, 146, 146);
+    border-radius: 50px;
+    overflow: hidden;
+    display: flex;
+    align-items: end;
+}
+.anInGraph {
+    width: 100%;
+    background-color: rgb(53, 226, 177);
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+.leg1 {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.leg1 .legBox {
+    height: 1em;
+    width: 1em;
+    background-color: rgb(146, 146, 146);
+}
+
+.leg2 {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.leg2 .legBox {
+    height: 1em;
+    width: 1em;
+    background-color: rgb(53, 226, 177);
+}
+
+.anGraph1 {
+    width: 10%;
+    height: 100%;
+    background-color: rgb(61, 103, 65);
+    border-radius: 50px;
+    overflow: hidden;
+    display: flex;
+    align-items: end;
+}
+.anInGraph1 {
+    width: 100%;
+    height: 20%;
+    background-color: rgb(199, 226, 48);
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+.leg3 {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.leg3 .legBox {
+    height: 1em;
+    width: 1em;
+    background-color: rgb(61, 103, 65);
+}
+
+.leg4 {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.leg4 .legBox {
+    height: 1em;
+    width: 1em;
+    background-color: rgb(199, 226, 48);
+}
+
+
+@media only screen and (max-width: 1530px) {
+    .pimage {
+        width: 80px;
+        height: 80px;
+    }
+
+    .pinfo h3 {
+        font-size: 18px;
+    }
+    .pinfo p {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 1252px) {
+    .btns {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .logo h1 {
+        font-size: 1.4em;
+    }
+
+    .pimage {
+        width: 60px;
+        height: 60px;
+    }
+
+    .pinfo h3 {
+        font-size: 16px;
+    }
+    .pinfo p {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 1363px) {
+    
+}
+
+@media only screen and (max-width: 1363px) {
+    
+}
