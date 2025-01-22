@@ -1,0 +1,38 @@
+:root {
+    --black: #021214;
+    --blackSecondary: #0a1010;
+
+    --white: #F5FAFD;
+    --secondaryWhite: #e7e8e8;
+    --paleWhite: #9c9c9c;
+    --grey: #767676;
+}
+
+.defaultMain {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+
+    background-color: var(--secondaryWhite);
+}
+
+.defaultMain h1 {
+    font-size: 70px;
+    color: var(--black);
+}
+
+.defaultMain h2 {
+    font-size: 20px;
+    color: var(--blackSecondary);
+}
+
+.defaultMain p {
+    color: var(--black);
+}
