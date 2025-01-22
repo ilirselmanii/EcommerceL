@@ -1,0 +1,473 @@
+:root {
+    --black: #021214;
+    --blackSecondary: #0a1010;
+    --white: #F5FAFD;
+    --secondaryWhite: #e7e8e8;
+    --paleWhite: #9c9c9c;
+    --grey: #767676;
+}
+
+.mainProducts {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 1%;
+}
+
+.filterSearch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    background: linear-gradient(45deg, var(--blackSecondary), var(--black));
+    height: 81.5vh;
+    border-radius: 20px;
+}
+
+.filterTitle {
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.filterTitle h1, .filterTitle h3{
+    color: var(--secondaryWhite);
+    text-align: center;
+}
+
+.productPlacement {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 66.5%;
+    border-radius: 20px;
+    height: 80vh;
+}
+
+.filterButtons {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.fsButtons {
+    width: 30%;
+    margin: 5px;
+
+    background-color: transparent;
+    border: 1px white solid;
+    border-radius: 6px;
+    color: white;
+    transition: all 0.1s;
+}
+
+.fsButtons:hover {
+    color: var(--black);
+    background-color: white;
+    cursor: pointer;
+}
+
+.selected {
+    color: var(--black);
+    background-color: white;
+}
+
+.filterMethod {
+    width: 100%;
+    margin-top: 2em;
+}
+
+.fmidMain {
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+.fmidMain input {
+    width: 80%;
+    margin-bottom: 5px;
+}
+
+/* Product card css */
+
+.noProducts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    background: -webkit-linear-gradient(var(--grey), var(--black));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.noProducts div{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.pCardMain {
+    display: flex;
+    flex-direction: column;
+    width: 96%;
+    padding: 20px;
+    border-radius: 25px;
+    gap: 1em;
+    background: linear-gradient(45deg, var(--blackSecondary), var(--black));
+}
+
+.rowOne {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    height: 35vh;
+}
+
+.rowOneLeft {
+    width: 70%;
+    height: 25em;
+}
+
+.pCardTitle {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pCardTitle h2 {
+    font-size: 2em;
+    color: var(--white);
+}
+
+.pCardTitle p {
+    color: var(--secondaryWhite);
+    position: relative;
+    right: 5px;
+}
+
+.pCardDesc {
+    width: 90%; 
+    height: auto;
+    aspect-ratio: 1 / 1; 
+    background-color: var(--secondaryWhite);
+    border-radius: 10px;
+    padding: 20px;
+    height: 50%;
+    overflow-y: scroll;
+}
+
+.rowOneRight {
+    width: 42%; 
+    position: relative; 
+}
+  
+.rowOneRight img {
+    width: 100%; 
+    height: auto;
+    aspect-ratio: 1 / 1; 
+    object-fit: cover; 
+    border-radius: 20px;
+}
+
+.pCardPublisher {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pCardPublisher img {
+    width: 3em; 
+    height: auto;
+    aspect-ratio: 1 / 1; 
+    object-fit: cover; 
+    border-radius: 6px;
+}
+
+.rowTwo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.rowTwo button {
+    padding: 1em;
+    width: 49%;
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    color: white;
+}
+
+.delProduct {
+    background-color: #E52922;
+    position: relative;
+    top: 50;
+}
+
+.delProduct:hover {
+    background-color: #ab1b16;
+    cursor: pointer;
+}
+
+.rowThree p, .pID{
+    color: var(--white);
+}
+
+.rowThree {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.generalInfo {
+    display: flex;
+    align-items: end;
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
+    margin: 30px 0;
+    color: var(--white);
+}
+
+.giHolder {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.giRefresh {
+    padding: 5px 30px;
+    background-color: transparent;
+    border: 2px white solid;
+    color: white;
+    border-radius: 10px;
+    transition: all 0.1s;
+}
+
+.giRefresh:hover {
+    background-color: #4545E6;
+    border: 2px #3737b9 solid;
+    cursor: pointer;
+} 
+
+.giTotalProducts {
+    align-items: center;
+}
+
+.giTotalProducts div {
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.product-deleted {
+    position: fixed;
+    top: 25px;
+    background-color: var(--paleWhite);
+    padding: 10px 20px;
+    border-radius: 8px;
+    right: 30px;
+    color: var(--black);
+    text-align: center;
+    transform: translateX(300px);
+    transition: transform 0.5s ease; 
+}
+
+.barPD {
+    margin: 5px auto;
+    width: 100%;
+    border-radius: 10px;
+    height: 4px;
+    background-color: rgb(125, 146, 151);
+    transition: width 0.1s;
+}
+.fullBar {
+    height: 100%;
+    border-radius: 10px;
+    background-color: rgb(5, 106, 169);
+    overflow: hidden;
+    transition: width 0.1s;
+}
+
+@media only screen and (min-width: 1797px) {
+    .rowOneRight {
+        width: 38%; 
+        position: relative; 
+    }
+      
+    .rowOneRight img {
+        width: 100%; 
+        height: auto;
+        aspect-ratio: 1 / 1; 
+        object-fit: cover; 
+        border-radius: 20px;
+    }
+}
+
+@media only screen and (min-width: 1834px) {
+    .rowOneRight {
+        width: 30%; 
+        position: relative; 
+    }
+      
+    .rowOneRight img {
+        width: 100%; 
+        height: auto;
+        aspect-ratio: 1 / 1; 
+        object-fit: cover; 
+        border-radius: 20px;
+    }
+}
+
+@media only screen and (max-width: 1632px) {
+    .pCardDesc p{
+        font-size: 14px;
+    }
+
+    .rowOneLeft {
+        height: 20em;
+    }
+
+    .giRefresh {
+        padding: 10px;
+        font-size: 12px;
+    }
+    
+    .giTotalProducts {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 1513px) {
+    .pCardMain {
+        width: 95%;
+    }
+    .pCardDesc p{
+        font-size: 12px;
+    }
+
+    .rowO, .rowT, .rowTh {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .fsButtons {
+        width: 50%;
+        margin: 5px;
+    }
+
+    .rowOneLeft {
+        height: 15em;
+    }
+}
+
+@media only screen and (max-width: 1450px) {
+    .rowOne {
+        display: flex;
+        justify-content: space-between;
+        height: 30vh;
+    }
+}
+
+@media only screen and (max-width: 1299px) {
+
+    .rowOne {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        height: 20vh;
+    }
+
+    .pCardMain {
+        width: 94%;
+        gap: 15px;
+    }
+
+    .pCardDesc {
+        height: 50%;
+    }
+
+    .pCardDesc p{
+        font-size: 10px;
+    }
+
+    .pCardTitle h2 {
+        font-size: 1.5em;
+    }
+
+    .pCardTitle p {
+        font-size: 13px
+    }
+
+    .rowOneLeft {
+        height: 13em;
+    }
+
+    .rowOneRight {
+        width: 29.8%; 
+        position: relative; 
+    }
+
+    .giRefresh p{
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 1092px) {
+    .pCardMain {
+        width: 93%;
+    }
+
+    .pCardMain {
+        gap: 12px;
+    }
+
+    .pCardTitle h2 {
+        font-size: 1.2em;
+    }
+
+    .pCardTitle p {
+        font-size: 11px
+    }
+
+    .pCardTitle {
+        margin-bottom: 10px;
+    }
+}
+
+@media only screen and (max-width: 952px) {
+    .pCardMain {
+        width: 92%;
+    }
+}
+
+@media only screen and (max-height: 880px) {
+    .rowTwo {
+        margin-top: 40px;
+    }
+}
+
+@media only screen and (max-height: 820px) {
+    .filterSearch {
+        height: 80vh;
+    }
+}  
+
+@media only screen and (max-height: 770px) {
+    .filterTitle h1 {
+        font-size: 1em;
+    }
+}
+
+
+
